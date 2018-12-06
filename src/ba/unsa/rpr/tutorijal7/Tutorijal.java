@@ -112,6 +112,27 @@ public class Tutorijal {
     }
 
     public static void main(String[] args) {
-        zapisiXml(ucitajXml(ucitajGradove()));
+
+        ArrayList<Grad> gradovi = ucitajGradove();
+        UN un = ucitajXml(gradovi);
+
+        ArrayList<Drzava> listaDrzava = un.getDrzave();
+        for (int i = 0; i < listaDrzava.size(); i++) {
+            System.out.println("Naziv drzave: " + listaDrzava.get(i).getNaziv());
+            System.out.println("Broj stanovnika: " + listaDrzava.get(i).getBrojStanovnika());
+            System.out.println("Povrsina: " + listaDrzava.get(i).getPovrsina());
+            System.out.println("Jedinica povrsine: " + listaDrzava.get(i).getJedinicaZaPovrsinu());
+            System.out.println("Glavni grad: " + listaDrzava.get(i).getGlavniGrad().getNaziv());
+            Double[] temperature = listaDrzava.get(i).getGlavniGrad().getTemperature();
+            System.out.println("Temperature ");
+            for(int j = 0; j < temperature.length; j++) {
+                if (temperature[j] != null && temperature[j] != 0.0) {
+                    System.out.println(temperature[j]);
+                }
+            }
+        }
+
     }
+
 }
+
